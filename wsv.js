@@ -182,7 +182,7 @@ wsv.prototype.handle = function(data, done){
 		self.assemble(self.header.map(function(k){ return data[k]; }));
 		
 	};
-	return this;
+	return done();
 };
 
 wsv.prototype.parseOpts = function(opts){
