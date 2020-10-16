@@ -3,6 +3,8 @@
 **wsv** is a lightweight, dependency-free and pretty robust stream strigifier for data with character separated values like `csv`, `tsv` and similar. It's versatile enough to produce most formats.
 It's deliberately written in plain old JavaScript and can be used with any node version capable of `Stream.Transform`.
 
+If you nead a *sv parser, check out [xsv](https://www.npmjs.com/package/xsv).
+
 ## Usage Example
 
 ```javascript
