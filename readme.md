@@ -31,11 +31,11 @@ var stringify = wsv({
 	untab: true,
 });
 
-wsv.pipe(fs.createReadStream("file.tsv"));
+stringify.pipe(fs.createWriteStream("file.tsv"));
 
-data.forEach(function(record){ wsv.write(record); })
+data.forEach(function(record){ stringify.write(record); })
 
-wsv.end();
+stringify.end();
 
 ```
 
