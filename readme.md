@@ -41,12 +41,12 @@ stringify.end();
 
 ## Options
 
-wsv takes one argument, which is either a string or an object. In case of a string, it can eiter be the name of a preset (`csv`, `tsv` or `asv`) or will be interpreted as the separation character.
+wsv takes one argument, which is either a string or an object. In case of a string, it can eiter be the name of a preset (`csv`, `tsv`, `ssv` or `asv`) or will be interpreted as the separation character.
 
 In case of an object, 
 
 ### `preset` (`<string>`)
-* Identifier of a preset: `csv`, `tsv` or `asv`
+* Identifier of a preset: `csv`, `tsv`, `ssv` or `asv`
 
 ### `sep` (`<string>`|`<Buffer>`|`<int>`)
 * Delimiter

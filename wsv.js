@@ -25,6 +25,17 @@ var presets = {
 		unbreak: true,
 		untab: true,
 	},
+	ssv: { // semicolon separated values (what excel does in some localizations)
+		sep: 0x3b,
+		quote: "\"",
+		escape: "\\",
+		break: "\n",
+		empty: "",
+		buffers: true,
+		objects: true,
+		unbreak: true,
+		untab: false,
+	},
 	asv: { // ascii separated values
 		sep: 0x1f,
 		quote: 0x2,
