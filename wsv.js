@@ -13,6 +13,7 @@ var presets = {
 		objects: true,
 		unbreak: true,
 		untab: false,
+		sanitize: false,
 	},
 	tsv: { // tab separated values
 		sep: "\t",
@@ -24,6 +25,7 @@ var presets = {
 		objects: true,
 		unbreak: true,
 		untab: true,
+		sanitize: false,
 	},
 	ssv: { // semicolon separated values (what excel does in some localizations)
 		sep: 0x3b,
@@ -35,6 +37,7 @@ var presets = {
 		objects: true,
 		unbreak: true,
 		untab: false,
+		sanitize: false,
 	},
 	asv: { // ascii separated values
 		sep: 0x1f,
@@ -47,6 +50,7 @@ var presets = {
 		objects: true,
 		unbreak: false,
 		untab: false,
+		sanitize: false,
 	},
 };
 
@@ -79,6 +83,9 @@ wsv.prototype.stringify = function(field) {
 	if (needquotes) collect.push((self.opts.startquote !== null) ? self.opts.startquote[0] : self.opts.quote[0]);
 
 	for (var i = 0; i < field.length; i++) {
+
+		// sanitize: remove non printable characters
+		if (self.opts.sanitize && ((field[i] <= 0x1f) || (field[i] >= 0x7f && field[i] <= 0x9f))) continue;
 
 		if (self.opts.untab && field[i] === 0x9) {
 			collect.push(0x5c);
@@ -222,6 +229,7 @@ wsv.prototype.parseOpts = function(opts){
 		objects: (opts.hasOwnProperty("objects")) ? !!opts.unbreak : true,
 		unbreak: (opts.hasOwnProperty("unbreak")) ? !!opts.unbreak : true,
 		untab: (opts.hasOwnProperty("untab")) ? !!opts.untab : true,
+		sanitize: (opts.hasOwnProperty("sanitize")) ? !!opts.sanitize : false,
 	};
 };
 

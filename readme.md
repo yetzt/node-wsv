@@ -88,6 +88,10 @@ In case of an object,
 * Escape tab characters in strings with its ANSI escape seqence (*`<TAB>` → `\t`*)
 * Default: `true`
 
+### `sanitize` (`<boolean>`)
+* Remove non printable characters
+* Default: `false`
+
 ## License
 
 [UNLICENSE](UNLICENSE)
