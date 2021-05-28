@@ -1,6 +1,6 @@
 {
   "name": "wsv",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Stream based stringifier for data with character separated values",
   "main": "wsv.js",
   "author": "yetzt <node@yetzt.me>",

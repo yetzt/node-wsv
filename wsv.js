@@ -89,7 +89,7 @@ wsv.prototype.stringify = function(field) {
 	for (var i = 0; i < field.length; i++) {
 
 		// formula escape: prefix characters that might lead excel to interpret fields as formulae with 0x27 to prevent this
-		if (i === 0 && self.opts.formulaescape && (field[i] === 0x3d || field[i] === 0x2b || field[i] === 0x2d || field[i] === 0x40 || field[i] === 0x9 || field[i] === 0xd)) collect.push(0x27);
+		if (i === 0 && self.opts.formulaescape && (field[i] === 0x22 || field[i] === 0x3d || field[i] === 0x2b || field[i] === 0x2d || field[i] === 0x40 || field[i] === 0x9 || field[i] === 0xd)) collect.push(0x27);
 
 		// sanitize: remove non printable characters
 		if (self.opts.sanitize && ((field[i] <= 0x1f) || (field[i] >= 0x7f && field[i] <= 0x9f))) continue;
