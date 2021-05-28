@@ -92,7 +92,10 @@ In case of an object,
 * Remove non printable characters
 * Default: `false`
 
+### `formulaescape` (`<boolean>`)
+* Prevent [CSV injection](https://owasp.org/www-community/attacks/CSV_Injection) by prefixing affected values with `'` (*`^[-=+@\x9\xd]` → `'[-=+@\x9\xd]`*)
+* Default: `false`
+
 ## License
 
 [UNLICENSE](UNLICENSE)
-

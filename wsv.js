@@ -14,6 +14,7 @@ var presets = {
 		unbreak: true,
 		untab: false,
 		sanitize: false,
+		formulaescape: false,
 	},
 	tsv: { // tab separated values
 		sep: "\t",
@@ -26,6 +27,7 @@ var presets = {
 		unbreak: true,
 		untab: true,
 		sanitize: false,
+		formulaescape: false,
 	},
 	ssv: { // semicolon separated values (what excel does in some localizations)
 		sep: 0x3b,
@@ -38,6 +40,7 @@ var presets = {
 		unbreak: true,
 		untab: false,
 		sanitize: false,
+		formulaescape: false,
 	},
 	asv: { // ascii separated values
 		sep: 0x1f,
@@ -51,6 +54,7 @@ var presets = {
 		unbreak: false,
 		untab: false,
 		sanitize: false,
+		formulaescape: false,
 	},
 };
 
@@ -83,6 +87,9 @@ wsv.prototype.stringify = function(field) {
 	if (needquotes) collect.push((self.opts.startquote !== null) ? self.opts.startquote[0] : self.opts.quote[0]);
 
 	for (var i = 0; i < field.length; i++) {
+
+		// formula escape: prefix characters that might lead excel to interpret fields as formulae with 0x27 to prevent this
+		if (i === 0 && self.opts.formulaescape && (field[i] === 0x3d || field[i] === 0x2b || field[i] === 0x2d || field[i] === 0x40 || field[i] === 0x9 || field[i] === 0xd)) collect.push(0x27);
 
 		// sanitize: remove non printable characters
 		if (self.opts.sanitize && ((field[i] <= 0x1f) || (field[i] >= 0x7f && field[i] <= 0x9f))) continue;
@@ -230,6 +237,7 @@ wsv.prototype.parseOpts = function(opts){
 		unbreak: (opts.hasOwnProperty("unbreak")) ? !!opts.unbreak : true,
 		untab: (opts.hasOwnProperty("untab")) ? !!opts.untab : true,
 		sanitize: (opts.hasOwnProperty("sanitize")) ? !!opts.sanitize : false,
+		formulaescape: (opts.hasOwnProperty("formulaescape")) ? !!opts.formulaescape : false,
 	};
 };
 
