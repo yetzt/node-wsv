@@ -5,7 +5,7 @@
   "main": "wsv.js",
   "author": "yetzt <node@yetzt.me>",
   "license": "UNLICENSE",
-  "keywords": ["csv","tsv","dsv","sv","wsv","stringifier","stream","stringify","streaming","transform","node"],
+  "keywords": ["csv","tsv","ssv","asv","dsv","sv","wsv","stringifier","stream","stringify","streaming","transform","node"],
   "repository": {
     "type": "git",
     "url": "https://github.com/yetzt/node-wsv"
